@@ -11,7 +11,9 @@
         <header class="wrapper">
             <ul class="nav-bar">
                 <li class="nav"><a href="{% url 'home' %}">Home</a></li>
-                <li class="nav"><a href="{% url 'account:profile' request.user %}">Your profile</a></li>
+                {% if user.is_authenticated %} 
+                    <li class="nav"><a href="{% url 'account:profile' request.user %}">Your profile</a></li>
+                {% endif %}
                 <li class="nav"><a href="{% url 'about' %}">About</a></li>
                 <li class="nav"><a href="{% url 'contact' %}">Contact</a></li>
 
