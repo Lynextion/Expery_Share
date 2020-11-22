@@ -1,0 +1,13 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="class-profile">
+    <h2 class="h2-profile">edit profile</h2>
+    <form class="site-form" action="{% url 'account:profile_edit' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Create">
+    </form>
+</div>
+
+{% endblock %}

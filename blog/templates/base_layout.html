@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Articles</title>
+        <link rel ="stylesheet" href= "{% static 'style.css' %}">
+    </head>
+    <body>
+        <div style="background-image: url('/static/Starsinthesky.jpg');"></div>
+        <header class="wrapper">
+            <ul class="nav-bar">
+                <li class="nav"><a href="{% url 'home' %}">Home</a></li>
+                <li class="nav"><a href="{% url 'account:profile' request.user %}">Your profile</a></li>
+                <li class="nav"><a href="{% url 'about' %}">About</a></li>
+                <li class="nav"><a href="{% url 'contact' %}">Contact</a></li>
+
+            </ul>
+            <h1><a href="{% url 'home' %}"><img class="back" src="{% static 'experyshare_logo.png' %}" alt="blog"/></a></h1>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                   <li>
+                       <form class="logout-link" action="{% url 'account:logout' %}" method='post'>
+                           {% csrf_token %}
+                           <button type="submit" class="highlight">Logout</button>
+                       </form>
+                   </li> 
+                   <li>
+                       <a href="{% url 'articles:create' %}" class="highlight" >Create article</a>
+                   </li>
+                   {% else %}
+                        <li><a href="{% url 'account:login' %}" class="highlight">Login</a></li>
+                        <li><a href="{% url 'account:signup' %}" class="highlight">Signup</a></li>
+                   {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <div class="search">
+            <form class="search-form" action="{% url 'search' %}" method='get'>
+                 <input class="search-input" type="text" placeholder="Search" name="search"/>
+                 <button class="search-button" type="submit"><i class="fa fa-search"></i>Search</button>
+                 
+             </form>
+         </div>
+        <div class ="wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <style>
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color:#00dba0;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+          }
+          
+          #myBtn:hover {
+            background-color: #555;
+          }
+          </style>
+          <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+          <script>
+          
+          var mybutton = document.getElementById("myBtn");
+          
+          
+          window.onscroll = function() {scrollFunction()};
+          
+          function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              mybutton.style.display = "block";
+            } else {
+              mybutton.style.display = "none";
+            }
+          }
+          
+          
+          function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+          }
+          </script>
+    </body>
+</html>

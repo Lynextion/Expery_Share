@@ -1,0 +1,23 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="profile-wrapper">
+    <div class="profile_result">
+        <img src="{{ profile.avatar.url }}">
+        <h1>{{profile.user}}</h1>
+        <div class="bio_profile_result">
+            <p>{{profile.bio}}</p>
+        </div>
+    <div class="article-list">
+        {% for article in articles %}
+        <a href="{% url 'articles:details' article.slug %}"><div class="article">
+                
+                <h2>{{article.title}}</h2>
+                <p> {{article.snippet}}</p>
+                <p>{{article.date}}</p>
+                <p class="author">added by {{article.author.username}}</p>
+            </div></a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

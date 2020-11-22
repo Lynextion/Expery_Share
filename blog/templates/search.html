@@ -1,0 +1,12 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+{% for searchs in post %}
+<div class="search-results">
+    <form class="results" action="{% url 'account:profile_view' searchs.user  %}" method='get' >
+        <button class="search-result" type="submit" name="result" value="{{ searchs.user }}"><h1>{{ searchs.user }}</h1>
+    </form>
+</div>
+{% endfor %}
+{% endblock %}

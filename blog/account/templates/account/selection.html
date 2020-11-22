@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="selection">
+    <h1>Please signup or login to continue</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'account:login' %}"><h2>Login</h2></a>       
+            </li>
+            <li>
+                <a href="{% url 'account:signup' %}"><h2>Signup</h2></a>
+            </li>
+        </ul>
+    </nav>
+    
+</div>
+{% endblock %} 
