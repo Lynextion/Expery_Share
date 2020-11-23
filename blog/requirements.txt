@@ -1,0 +1,9 @@
+asgiref==3.2.10
+Django==3.1.2
+django-resized==0.3.11
+Pillow==8.0.1
+pytz==2020.1
+six==1.15.0
+sqlparse==0.4.1
+Wand==0.6.3
+whitenoise==5.2.0
