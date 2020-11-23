@@ -1,1 +1,1 @@
-web: gunicorn blog.wsgi --log-file -
+web: gunicorn expery-share.wsgi --log-file -
