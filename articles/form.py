@@ -10,6 +10,6 @@ class CreateArticle(forms.ModelForm):
             'folder':'thumbs'
         }
     )
-     class Meta:
-         model = models.Article
-         fields = ('title','body','slug','thumb')
+    class Meta:
+        model = models.Article
+        fields = ('title','body','slug','thumb')
