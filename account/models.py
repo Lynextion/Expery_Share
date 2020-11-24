@@ -1,14 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django import forms
-from django_resized import ResizedImageField
+from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
     email = models.CharField(max_length=200, default="no e-mail...")
     bio = models.TextField(default='no bio')
     created = models.DateTimeField(auto_now_add=True)
-    avatar = ResizedImageField(default='avatar.png',blank=True,size=[500,300],quality=75)
+    avatar = CloudinaryField('avatar')
     created = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,default=None)
     profile_name=models.CharField(max_length=100,default="no_name",blank=True)
