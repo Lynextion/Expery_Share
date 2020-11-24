@@ -11,6 +11,6 @@ class CreateAccount(forms.ModelForm):
             'folder':'avatars' 
         }
     )
-     class Meta:
-         model = models.Profile
-         fields = ('email','bio','avatar')
+    class Meta:
+        model = models.Profile
+        fields = ('email','bio','avatar')
