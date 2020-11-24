@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django_resized import ResizedImageField
+from cloudinary.models import CloudinaryField
 
 
 class Article(models.Model):
@@ -8,7 +8,7 @@ class Article(models.Model):
     slug = models.SlugField()
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    thumb = ResizedImageField(blank=True,size=[1280,720],quality=75)
+    thumb = CloudinaryField('thumb')
     author = models.ForeignKey(User,on_delete=models.CASCADE,default=None)
 
     
